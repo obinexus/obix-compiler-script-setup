@@ -83,8 +83,6 @@ Depends on `obix-compiler-script` (which loads the official compiler on the firs
 npm install obix-compiler-script-setup
 ```
 
-> **Not yet on npm.** The OBIX packages are prepared for publication and are published only on the owner's authorisation; until then this is the command the published package will answer to.
-
 ## API surface
 
 - `obix-compiler-script-setup` — 5 value exports: `OBIX_SCRIPT_CODES`, `OBIX_SCRIPT_MESSAGE_CODES`, `OBIX_SCRIPT_SETUP_MESSAGE_CODES`, `compileObixScriptSetup`, `scriptCompilerVersion`
@@ -103,11 +101,12 @@ The architecture of OBIX — the package families and which packages are public 
 
 ## Testing
 
-- No test file ships in the npm package: this package's tests use the monorepo's shared harness (listed below), so they are in the repository only.
-- Run them with `npm test` (`node --test "test/*.test.mjs"`) in the OBIX monorepo, which provides the test tooling (Node's test runner, TypeScript).
-- 2 test files are in the repository but not in the npm package, because they use the monorepo's shared test harness, oracles or fixtures:
+- 2 test files ship in the npm package (`test/`): the evidence of the package's contract, published so that its verification can be inspected — not runtime code (no entry point reaches them).
+- **Standalone**: none.
+- **Need the OBIX development / test harness**: 2 — they read the OBIX monorepo's shared harness, oracles or fixtures, so they do **not** run from an npm install or from this package's repository alone; they are shipped for inspection and provenance:
   - `test/env-probe.mjs` — reads ../../../tests/vuets/oracle.mjs, outside the package
   - `test/script-setup.test.mjs` — reads ../../../tests/vuets/oracle.mjs, outside the package
+- Run them with `npm test` (`node --test "test/*.test.mjs"`) in the OBIX monorepo, which provides the test tooling (Node's test runner, TypeScript) and the harness.
 
 ## Documentation
 
@@ -118,7 +117,7 @@ The architecture of OBIX — the package families and which packages are public 
 
 - https://github.com/obinexus/obix-compiler-script-setup — `git@github.com:obinexus/obix-compiler-script-setup.git`
 - Issues: https://github.com/obinexus/obix-compiler-script-setup/issues
-- The repository is a clean export of the package from the OBIX monorepo; its lineage (the monorepo commit it was exported from, the sources it was recovered from, earlier names) is in `PROVENANCE.json`.
+- The repository is a clean export of the package from the OBIX monorepo. Its lineage — the sources it was recovered from and its earlier names — is `PROVENANCE.json`, shipped in this package; the repository's copy also records the monorepo commit it was exported from.
 
 ## License
 
