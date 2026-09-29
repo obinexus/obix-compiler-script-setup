@@ -1,0 +1,34 @@
+{
+  "package": "obix-compiler-script-setup",
+  "dir": "compiler/obix-compiler-script-setup",
+  "importedBy": "authored in the recovery (no importer entry: there is no upstream package of this name)",
+  "stage": "vuets-phase-3 authored",
+  "sources": [
+    {
+      "label": "authored-in-recovery",
+      "note": "compileObixScriptSetup on the shared core of @obinexusltd/obix-compiler-script, the OBIX diagnostic vocabulary of <script setup> (the compiler macros, the props destructure, type resolution), tests and README. No Vue source was copied or forked: the official compiler is reached through @obinexusltd/obix-compiler-script (@vue/compiler-sfc 3.5.43, pinned by obix-vue.json), so this package declares no Vue-family dependency of its own."
+    }
+  ],
+  "transforms": [],
+  "notes": [
+    "The artifact is a frontend artifact (Vue's compiled setup module, binding metadata and Babel AST), not the semantic authority of OBIX: the canonical DOP IR is (D-44).",
+    "The corpus is tests/corpus/vuets (pairs of byte-identical .vue / .obix fixtures); the oracle shared by the script stages is tests/vuets/oracle.mjs."
+  ],
+  "localFixes": [],
+  "renamedFrom": [
+    {
+      "name": "@obinexusltd/obix-compiler-script-setup",
+      "dir": "compiler/obix-compiler-script-setup",
+      "stage": "unscoped-naming",
+      "why": "D-102 (2026-09-29): OBIX packages are named without an npm scope — previous name @obinexusltd/obix-compiler-script-setup, current name obix-compiler-script-setup (docs/recovery/unscoped-migration.md); the directory, version and exports are unchanged"
+    }
+  ],
+  "export": {
+    "from": "https://github.com/obinexusmk2/obix-monorepo",
+    "branch": "recovery/obix-api-preserving-rebuild",
+    "commit": "69cafc94910c1add865a520877617ac307668875",
+    "directory": "compiler/obix-compiler-script-setup",
+    "exportedBy": "scripts/release/export-repos.mjs",
+    "note": "a clean initial commit of this package; the monorepo history is not imported (D-103). Local machine paths in this record are replaced by <local workspace>."
+  }
+}
